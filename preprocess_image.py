@@ -31,7 +31,8 @@ def preprocess_image(image, watermark_type):
     aspectRatioMaskImage = mask_image.shape[1] / mask_image.shape[0]
     upperBoundAspectRatio = 1.05 * aspectRatioMaskImage
     lowerBoundAspectRatio = 0.95 * aspectRatioMaskImage
-
+    preprocessed_mask_image = cv2.resize(mask_image, (image_w, image_h))
+    print(preprocessed_mask_image.shape)
     if aspectRatioImage >= lowerBoundAspectRatio and aspectRatioImage <= upperBoundAspectRatio:
         preprocessed_mask_image = cv2.resize(mask_image, (image_w, image_h))
         print(preprocessed_mask_image.shape)
