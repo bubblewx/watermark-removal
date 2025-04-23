@@ -13,7 +13,7 @@ from neuralgym.ops.loss_ops import *
 from neuralgym.ops.gan_ops import *
 from neuralgym.ops.summary_ops import *
 
-
+from tensorflow.keras import layers
 logger = logging.getLogger()
 np.random.seed(2018)
 
@@ -43,9 +43,14 @@ def gen_conv(x, cnum, ksize, stride=1, rate=1, name='conv',
         p = int(rate*(ksize-1)/2)
         x = tf.pad(x, [[0,0], [p, p], [p, p], [0,0]], mode=padding)
         padding = 'VALID'
-    x = tf.compat.v1.layers.conv2d(
-        x, cnum, ksize, stride, dilation_rate=rate,
-        activation=None, padding=padding, name=name)
+    x = layers.Conv2D(
+    filters=cnum,
+    kernel_size=ksize,
+    strides=stride,
+    dilation_rate=rate,
+    activation=None,
+    padding=padding,
+    name=name)(x)
     if cnum == 3 or activation is None:
         # conv for output
         return x
