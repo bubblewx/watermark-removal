@@ -11,7 +11,7 @@ def preprocess_image(image, watermark_type):
     image = np.array(image)
 
     print("image origin size: {}".format(image.shape))
-    image = cv2.resize(image, (260,800))
+    image = cv2.resize(image, (360,800))
 
     image_h = image.shape[0]
     image_w = image.shape[1]
