@@ -8,7 +8,8 @@ import tensorflow as tf
 import neuralgym as ng
 
 from inpaint_model import InpaintCAModel
-
+from tensorflow.keras.mixed_precision import set_global_policy
+set_global_policy('mixed_float16')
 parser = argparse.ArgumentParser()
 parser.add_argument('--image', default='', type=str,
                     help='The filename of image to be completed.')
