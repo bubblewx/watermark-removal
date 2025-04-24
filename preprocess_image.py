@@ -9,6 +9,8 @@ def preprocess_image(image, watermark_type):
     if image.mode != "RGB":
         image = image.convert("RGB")
     image = np.array(image)
+    image = cv2.resize(image, (512, 512))
+
     image_h = image.shape[0]
     image_w = image.shape[1]
     aspectRatioImage = image_w / image_h
