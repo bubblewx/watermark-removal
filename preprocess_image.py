@@ -9,7 +9,9 @@ def preprocess_image(image, watermark_type):
     if image.mode != "RGB":
         image = image.convert("RGB")
     image = np.array(image)
-    image = cv2.resize(image, (512, 512))
+
+    print("image origin size: {}".format(image.shape))
+    image = cv2.resize(image, (1242, 1656))
 
     image_h = image.shape[0]
     image_w = image.shape[1]
